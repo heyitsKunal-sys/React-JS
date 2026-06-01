@@ -88,7 +88,7 @@ Through ReactJS, I learned:
 ## 🔥 Status
 
 ✔ ReactJS Completed  
-🔄 Learning and building more projects  
+🔄 Learning and building more projects and gain more knoweledge
 
 ---
 
