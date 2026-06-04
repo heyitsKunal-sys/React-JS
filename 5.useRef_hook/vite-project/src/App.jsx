@@ -1,41 +1,47 @@
-import { useState } from 'react'
+import { useState , useEffect , useRef } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
-import { useEffect } from 'react'
-import Navbar from './components/Navbar'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [first, setfirst] = useState(0)
-  const [color, setcolor] = useState(0)
-  // this will run on evry render of the component
+  // let a = 0;
+
+  // useEffect(() => {
+  //   a = a+1
+  
+  //   console.log(`rerendering and the value of a is ${a}..`)
+  
+    
+  // },)
+  // is wale part me scn ye h ki a ki value pehle 1 hogi phir 2 phir 1 ho gyi. jab ye component rerender hota h tab ye code dubara chlata hai tab a ki valur phir 0 ho jati h,
+  // isi dikkt k liye hum useRef ka use krte hai.
+
+
+  /* CASE 1*/ 
+  // const a = useRef(0)
+  // useEffect(() => {
+  //   a.current = a.current +1
+  //   console.log(`rerendering and the value of a is ${a.current}..`)
+  
+    
+  // },)  is waLe ki help se upr wali prblm solve
+
+  /* case 2 */
+  const ref = useRef()
+
   useEffect(() => {
-    alert('hey welcome to my page')
-
-
-  }, )
-//  this will run only when the count changes
-  useEffect(() => {
-    alert('count for change')
-    setcolor(color +1)
-
-
-  }, [count])
-
-  // this will run only when the first changes 
-
-  useEffect(() => {
-    alert('first for change')
-
-
-  }, [first])
-
-
+    console.log("first rerendering")
+    ref.current.style.backgroundColor = "red"
+   /* button ka color red ho jayega */
+  
+    
+  }, [])
+  
+  
   return (
     <>
-    <Navbar color={"navy" + "blue" + color}/>
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -48,7 +54,7 @@ function App() {
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
         </div>
-        <button
+        <button ref = {ref}
           type="button"
           className="counter"
           onClick={() => setCount((count) => count + 1)}
