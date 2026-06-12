@@ -6,6 +6,32 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [showbtn, setshowbtn] = useState(false)
+  const [todos, setTodos] = useState([
+    {
+      title: "hey",
+      desc: "iam a good todo"
+
+    },
+    {
+      title: "hey another todo",
+      desc: "iam a good todo too"
+
+    },
+    {
+      title: "hey iam a grocery todo",
+      desc: "iam a good todo"
+
+    }
+  ])
+  const Todo = ({ todo }) => {
+    return (<>
+      <div className='todo'>{todo.title}</div>
+      <div className='todo'>{todo.desc}</div>
+
+
+    </>)
+  }
 
   return (
     <>
@@ -24,10 +50,16 @@ function App() {
         <button
           type="button"
           className="counter"
-          onClick={() => setCount((count) => count + 1)}
+          onClick={() => setshowbtn(!showbtn)}
         >
           Count is {count}
         </button>
+        {showbtn ? <button>show button is true </button> : <button>
+          showbutton is false</button>}
+        {/* {showbtn && <button>i will be shown only when second button is clicked</button>} */}
+        {todos.map(todo=>{
+          return <Todo todo ={todo}  />
+        })}
       </section>
 
       <div className="ticks"></div>
